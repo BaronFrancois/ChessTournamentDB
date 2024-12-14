@@ -1,0 +1,112 @@
+
+● liste de tous les tours du tournoi et de tous les matchs du tour.
+check round loading in option 8 
+(output of final score instead of "current" round score)
+12/10/2024
+
+- report flake 8, max line 119
+
+-commentary
+
+-function < 50 line
+
+-read me : flake 8, "tutorial"
+
+-create class for registration_view : View
+
+- soutenance :  faire un tournois, quitter recharger,rapport
+
+-exemple class, 
+-clean the code, repetition -> function
+----------------------------------------------------------------------------------
+(2-create utils folder / report_util.py)
+
+with open(f"resources/reports/rounds_&_matches_{self.tournament.name}_report.txt","w") as file:
+                file.writelines(report) 
+                print(f"{self.tournament.name}'s rounds and matches report has been generated")
+save_report()
+
+def save_report(report, ouput_file):
+    with open(f"{ouput_file}","w") as file:
+        file.writelines(report) 
+        print(f"Your report has been generated")
+report = []
+report.append(f"----")
+save_report(report, f'rounds_&_matches_{self.tournament.name}_report.txt')
+----------------------------------------------------------------------------------
+Fix testes files (functions names)
+
+15/10/2024
+----------------------------------------------------------------------------------
+Make code flexible for resuming app & reports
+----------------------------------------------------------------------------------
+-find similare lines inside of tournament_controller () change save json function
+----------------------------------------------------------------------------------
+Note for tournament controller :
+génération de rapports utilitaires pour éviter la duplication de code.
+Ajouter des blocs try-except pour gérer les exceptions potentielles (utilisateur input)
+Créer des schémas validations d'input
+Peut être les types ?
+----------------------------------------------------------------------------------
+quand on enregistre un joueur, quand on demande le nom du tournois -> s'il n'existe pas on devrait arreter l'enregistrement
+-check If Chess_id exists in club.json
+----------------------------------------------------------------------------------
+26/10/2024
+def create_tournament(self, details = None): change it like registrer_player()
+# check if chess id pattern is correct (AB12345)
+----------------------------------------------------------------------------------
+02/11/2024
+doing the header and row for report:
+We'll change the keys name of headers to the actuals keys name inside player dictionnary so that it would be usable without creating a new dictionnary.
+----------------------------------------------------------------------------------
+04/11/2024
+clean up the code into tournament controller (see_all_players)
+sort by alphabetical order for players in tournament_controller.show_tournament_player
+----------------------------------------------------------------------------------
+08/11/2024
+Into the json file (tournament6) the registered player has less details:
+federation, country and club_name
+----------------------------------------------------------------------------------
+done 1,2,4,7
+----------------------------------------------------------------------------------
+15/11/2024
+Check for the tournaments report save
+----------------------------------------------------------------------------------
+18/11/2024
+Chech for option number 8 and then 5
+----------------------------------------------------------------------------------
+make functions more flexible, changing the 
+----------------------------------------------------------------------------------
+add player into tournament 9, start tournament (see tournament details printing, if it is it's ok otherwise check)
+----------------------------------------------------------------------------------
+26/11/2024
+try to work on option 8. Sequence to follow, report generated first, show the report, then ask for save
+----------------------------------------------------------------------------------
+28/11/2024
+flattern the rounds, check if it is a list of dictionnaries instead of list of objects.
+Use the key instead of attributes.
+-check into tourControler and tournament.py and tournamentView, remove unused functions
+-search the functions name into global file, if it's not used anywhere remove it
+----------------------------------------------------------------------------------
+WIP checking rounds = self.tournament.get_flat_rounds_dict()
+        for round in rounds:
+            print(round)
+----------------------------------------------------------------------------------
+round 1 it saves correctly and when when launch round 2 it updates the playr_score from round 1 too
+----------------------------------------------------------------------------------
+/!\ if tourament_end_date = null, all tournaments reports are not going to be generated.
+-> if this is the case we can set the same date
+----------------------------------------------------------------------------------
+02/12/2024
+& add_flat_players in tournament file
+&check tournament_view
+-> start updating testes
+----------------------------------------------------------------------------------
+04/12/2024
+check for different functions 
+----------------------------------------------------------------------------------
+09/12/2024
+do the register_player test = succes, error, paused
+----------------------------------------------------------------------------------
+14/12/2024
+wright Error testecases for the last 3 functions with a wrong tournament name.
